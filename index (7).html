@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>index.html</title>
+  <style>
+    body{
+  background: linear-gradient(pink, salmon);
+}
+.Box {
+  text-align: center;
+  width: 250px;
+  height: 600px;
+  margin-bottom: 100px;
+  margin-left: 10px;
+  margin-top: 50px;
+  padding: 10px;
+  border-width: 2px;
+  border-radius: 25px;
+  /* Applies a smooth 2-second transition to all transform changes */
+  transition: transform 2s;
+}
+
+/* Individual hover effects as seen in the image */
+#box1:hover {
+  transform: translateX(100px);
+}
+
+#box2:hover {
+  transform: rotate(360deg);
+}
+
+#box3:hover {
+  transform: rotateX(360deg);
+}
+
+#box4:hover {
+  transform: rotateY(360deg);
+}
+
+#box5:hover {
+  transform: scaleX(1.5);
+}
+
+#box6:hover {
+  transform: scale(1.3);
+}
+ .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            background: var(--primary-gradient);
+            color: darkred;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(201, 24, 74, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 25px rgba(201, 24, 74, 0.5);
+            filter: brightness(1.1);
+        }
+        
+        
+                /* --- ICONS --- */
+        .icon-box {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px rgba(255, 77, 109, 0.6));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+  </style>
+</head>
+  <link href="fonts.googleapis.com" rel="stylesheet">
+<body>
+           <audio id="myAudio" src="barbaad.mp3" loop ></audio>
+   <div class="button-container"><button onclick="playMusic()" style="text-align: center;
+   padding-left: 1000px;
+   display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            background: var(--primary-gradient);
+            color: darkred;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(201, 2, 74, 0.3);
+        } .button-container {
+      display: flex;
+      justify-content: center; /* क्षैतिज केंद्र */
+      align-items: center;     /* लंबवत केंद्र */
+      height: 100vh;           /* यदि आप पूरे पेज पर केंद्र करना चाहते हैं */
+    }">▶️ Play Music🎵🎶</button>
+ </div>
+  <div id="box" class="Box"> 
+  <div class="icon-box">💗❣️</div>
+     <h1 style="font-family: 'Brush Script MT', cursive; font-size: 30px; color: darkred;">HAPPY🌹ANNIVERSARY.❤️ </h1>
+     <p style="font-family: 'Brush Script MT', cursive; font-size: 25px;">Happy anniversary , my love ️🫶! Every day wi🫴th you is a gift🎁 , and I'm so grateful to walk this journey with you . Here's to forever !
+      To my partner 👩‍❤️‍👨, my best friend, my everything – happy anniversary ! You make my heart smile 🥰 , and I can't wait for all the years to come .</p>
+      <button class="btn" onclick="nextbox(2)"> click me. 👉 </button>
+  </div>
+<div id="box2" class="Box">
+  <div class="icon-box">ﮩ٨ﮩ٨❤️ﮩ٨</div>
+  <h1 style="font-family: 'Brush Script MT', cursive; color: rebeccapurple;">1 year🗓 , 1 heart 💖, 1 soul 👻<h1>
+    <p style="font-family: 'Brush Script MT', cursive; font-size: 25px;">One year down, forever to go. This is just the beautiful beginning🚀 of your love story😊👀🖇💗. It marks the successful completion of the first , or 365 days (52 weeks, 525,600 minutes) together🫂."I love our story. A successful marriage requires falling in love many times, always with the same person🙎‍♂️. </p>
+    <button class="btn" onclick="nextbox(3)">click me. ⏳️</button>
+</div>
+
+
+<div id="box3" class="Box"> <div class="icon-box">📸</div>
+<h1 style="font-family: 'Brush Script MT', cursive; color: darkred;">A moment of forever♾️</h1>
+<p style="font-family: 'Brush Script MT', cursive; font-size: 25px;">What a lovely💕 memory of when we first met! My favorite🥰 moment was when you placed your hand on my shoulder🫂 for that pictur📷e, almost like a husband and wife. And then, walking with your hand👫 in mine, and resting my head on your shoulder... that moment will stay me for lifetime😇.
+</p>
+<button class="btn" onclick="nextbox(4)">click me!🫰</button>
+</div>
+
+
+<div id="box4" class="Box">
+  <div class="icon-box">😊👀🖇</div>
+  <h1 style="font-family: 'Brush Script MT', cursive;">Growing affection</h1>
+  <p style="font-family: 'Brush Script MT', cursive; font-size: 25px;">Every day I find a new reason to love you♥️. In a sea of people , my eyes👀 will always search🔍 for you. I love you more than me, but please don’t make me prove it🙌. For you see, each day I love you more, today more than yesterday and less than tomorrow🌅. Loved you yesterday, love you still, always have, always will😶.
+    
+  </p>
+  <button class="btn" onclick="nextbox(5)">click me!👈</button>
+</div>
+<div id="box5" class="Box">
+  <div class="icon-box">𓆩🥺💞𓆪</div>
+  <h1 style="font-family: 'Brush Script MT', cursive;">Lifetime♾️ Commitment🙌 </h1>
+  <p style="font-family: 'Brush Script MT', cursive; font-size: 25px;">My love💕! I promise🤝 to be by your side forever. I will never leave you🥲, no matter what happens.If, in the future, circumstances make you want to leave me, never think that I could ever be with someone else🥺. It’s you or no one.And if the day ever comes when we part,that will be the last day of happiness in my life🥹.</p>
+<button class="btn" onclick="nextbox(6)">Click me!😘</button>
+</div>
+<br>
+
+<div id="box6" class="Box">
+  <div class="icon-box">🎉🎊</div>
+  <h1 style="font-family: 'Brush Script MT', cursive; color: darkred;">Happy Anniversary😘</h1>
+  <h2 style="font-family: 'Brush Script MT', cursive; color: midnightblue;"> Current location= your heart❤️<br>Destination= A lifetime together🤝<br>Love= Infinite♾️<br>Status=Celebrate the best person on earth(you).😘</h2>
+  <h3 style="font-family: 'Brush Script MT', cursive;">"Every love story is beautiful, but ours is my favorite. Happy anniversary to us! I love you today and always.
+With all my love💖,
+[Divya😇]" </h3>
+  <button class="btn" >Celebrate!🎀🎁🎉</button>
+</div>
+  <script>
+        function playMusic() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    }
+  </script>
+  
+  
+  
+  
+  
+  </body>
+</html>
