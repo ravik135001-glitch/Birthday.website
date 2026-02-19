@@ -1,426 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday | 2025</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-dark: #0c0a09;
-            --primary-gradient: linear-gradient(135deg, #ff4d6d, #c9184a);
-            --heart-color: #ff4d6d;
-            --glass-bg: rgba(12, 10, 9, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
-            --text-muted: #d1d1d1;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            touch-action: manipulation; /* Optimizes mobile taps */
-        }
-
-        /* --- HEART SPRINKLE STYLES --- */
-        .heart-particle {
-            position: absolute;
-            color: var(--heart-color);
-            pointer-events: none;
-            user-select: none;
-            will-change: transform, opacity;
-            z-index: 9999;
-            font-size: 20px;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translate(0, 0) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--drift), -200px) scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* --- BACKGROUND LAYER 1: AURORA --- */
-        .aurora-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(circle at 50% -20%, #3e103f, transparent),
-                        radial-gradient(circle at 0% 100%, #1a1a2e, transparent),
-                        radial-gradient(circle at 100% 100%, #2d0a31, transparent);
-            background-color: var(--bg-dark);
-            filter: blur(80px);
-            animation: auroraMove 15s infinite alternate ease-in-out;
-        }
-
-        @keyframes auroraMove {
-            0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.1) translate(2%, 2%); }
-        }
-
-        /* --- BACKGROUND LAYER 2: THREE.JS CANVAS --- */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* --- PROGRESS BAR --- */
-        .progress-wrapper {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
-
-        #progress-fill {
-            height: 100%;
-            width: 20%;
-            background: var(--primary-gradient);
-            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* --- GLASS CARDS --- */
-        .card-container {
-            position: relative;
-            width: 90%;
-            max-width: 500px;
-            z-index: 10;
-        }
-
-        .step-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            display: none;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .step-card.active {
-            display: block;
-        }
-
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 100px;
-            background: var(--primary-gradient);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(201, 24, 74, 0.3);
-            position: relative;
-            z-index: 20;
-        }
-
-        .btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 25px rgba(201, 24, 74, 0.5);
-            filter: brightness(1.1);
-        }
-
-        /* --- ICONS --- */
-        .icon-box {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            filter: drop-shadow(0 0 15px rgba(255, 77, 109, 0.6));
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        #confetti {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="style.css">-->
+  <title>CSS button glow effect </title>
 </head>
+<style>html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  overflow: visible;
+  transform: scale(1.5);
+  height: 100vh;
+}
+
+/*button*/
+.btn {
+  padding: 15px 40px;
+  border: none;
+  outline: none;
+  color: #FFF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+}
+.btn::after{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+/*glow*/
+.btn::before {
+  content: "";
+  background: linear-gradient(
+  45deg, #FF0000, #FF7300, #FFF000, #48ff00, #00ffd5, #0028ff, #ff00c8, #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/*hover*/
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:active {
+  color: #000;
+  font-weight: bold;
+}</style>
+
 <body>
-
-    <div class="aurora-container"></div>
-    <div id="canvas-container"></div>
-    <canvas id="confetti"></canvas>
-
-    <div class="progress-wrapper">
-        <div id="progress-fill"></div>
-    </div>
-
-    <main class="card-container">
-        <!-- STEP 1 -->
-        <div class="step-card active" id="step1">
-            <div class="icon-box">❤️<div>
-            <h3> I made something🤌 special for you my life 🫣<h3> 
-            <br>
-            <h1>"HAPPY BIRTHDAY"<br> ( bday-Boy😎)</h1>
-            <p>Firstly, I wish you very "Happy birthday in my own style".💁️🎨</p>
-            <button class="btn" onclick="nextStep(2)">Chalo Start kare..🎉  👉</button>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="step-card" id="step2">
-            <div class="icon-box">✨</div>
-            <h3>A Moment for You</h3><br>
-            <img src="memory.jpg" height= 100px>
-            <img src="memory2.jpg" height= 100px>
-            <img src="memory1.png" height="100px">
-            <img src="memory3.jpg" height="100px">
-            <img src="memory4.jpg" height="100px">
-            <img src="memory5.jpg" height="100px">
-            <p>These are some special🤌 memories with you👩‍❤️‍👨 of our life that will come true🙌 in the future when you enter my life. These memories are to be spent only with you🥺 and no one else. You are my everything🌍; if not you, then no one else🥹."</p>
-            <button class="btn" onclick="nextStep(3)"></button>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="step-card" id="step3">
-            <div class="icon-box">🌟</div>
-            <h2>The Radiance</h2>
-            <p>If stars were measured by the joy they bring others, you'd be the brightest galaxy in the universe. Your energy is unmatched.</p>
-            <button class="btn" onclick="nextStep(4)">One More Thing...</button>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="step-card" id="step4">
-            <div class="icon-box">🎂</div>
-            <h2>Make a Wish</h2>
-            <p>Close your eyes, take a deep breath, and think of that one thing that would make your soul smile. Got it?</p>
-            <button class="btn" onclick="nextStep(5)">I've Made My Wish</button>
-        </div>
-
-        <!-- STEP 5 -->
-        <div class="step-card" id="step5">
-            <div class="icon-box">🎉</div>
-            <h2>Happy Birthday!</h2>
-            <p>May this year be filled with wild adventures, endless laughter, and all the love you deserve. Which is... a lot.</p>
-            <button class="btn" onclick="location.reload()">See It Again</button>
-        </div>
-    </main>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <script>
-        // --- 1. HEART SPRINKLE LOGIC ---
-        document.addEventListener('mousedown', (e) => {
-            createBurst(e.clientX, e.clientY);
-        });
-
-        document.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0];
-            createBurst(touch.clientX, touch.clientY);
-        }, { passive: true });
-
-        function createBurst(x, y) {
-            const heartCount = 6;
-            for (let i = 0; i < heartCount; i++) {
-                createHeartParticle(x, y);
-            }
-        }
-
-        function createHeartParticle(x, y) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-particle');
-            heart.innerHTML = '❤';
-
-            const size = Math.random() * 20 + 10 + 'px';
-            const drift = (Math.random() - 0.5) * 150 + 'px';
-            const duration = Math.random() * 1.5 + 1 + 's';
-            const delay = Math.random() * 0.2 + 's';
-
-            heart.style.left = x + 'px';
-            heart.style.top = y + 'px';
-            heart.style.fontSize = size;
-            heart.style.setProperty('--drift', drift);
-            heart.style.animation = `floatUp ${duration} ease-out ${delay} forwards`;
-
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 3000);
-        }
-
-        // --- 2. THREE.JS BACKGROUND (FLOATING HEARTS) ---
-        let scene, camera, renderer, hearts = [];
-
-        function initThree() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-            const heartShape = new THREE.Shape();
-            heartShape.moveTo(25, 25);
-            heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
-            heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
-            heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
-            heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
-            heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
-            heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
-
-            const geometry = new THREE.ExtrudeGeometry(heartShape, { depth: 2, bevelEnabled: true, bevelThickness: 2, bevelSize: 2 });
-            const material = new THREE.MeshPhongMaterial({ color: 0xff4d6d, shininess: 100 });
-
-            const light = new THREE.PointLight(0xffffff, 1, 500);
-            light.position.set(50, 50, 50);
-            scene.add(light);
-            scene.add(new THREE.AmbientLight(0x404040));
-
-            for (let i = 0; i < 30; i++) {
-                const heart = new THREE.Mesh(geometry, material);
-                heart.scale.set(0.05, 0.05, 0.05);
-                heart.position.set(
-                    (Math.random() - 0.5) * 100,
-                    (Math.random() - 0.5) * 100,
-                    (Math.random() - 0.5) * 50
-                );
-                heart.rotation.x = Math.PI;
-                heart.rotation.z = Math.random() * Math.PI;
-                heart.userData = { speed: Math.random() * 0.02 + 0.01 };
-                hearts.push(heart);
-                scene.add(heart);
-            }
-            camera.position.z = 50;
-        }
-
-        function animateThree() {
-            requestAnimationFrame(animateThree);
-            hearts.forEach(h => {
-                h.position.y += h.userData.speed;
-                h.rotation.y += 0.01;
-                if (h.position.y > 50) h.position.y = -50;
-            });
-            renderer.render(scene, camera);
-        }
-
-        // --- 3. NAVIGATION & CONFETTI ---
-        let currentStep = 1;
-        const totalSteps = 5;
-
-        function nextStep(step) {
-            const currentCard = document.getElementById(`step${currentStep}`);
-            const nextCard = document.getElementById(`step${step}`);
-
-            gsap.to("#progress-fill", { width: `${(step / totalSteps) * 100}%`, duration: 0.8 });
-
-            gsap.to(currentCard, {
-                opacity: 0,
-                y: -30,
-                duration: 0.5,
-                onComplete: () => {
-                    currentCard.classList.remove('active');
-                    nextCard.classList.add('active');
-                    gsap.fromTo(nextCard, 
-                        { opacity: 0, y: 30 }, 
-                        { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }
-                    );
-                    if(step === 5) launchConfetti();
-                }
-            });
-            currentStep = step;
-        }
-
-        function launchConfetti() {
-            const duration = 4 * 1000;
-            const end = Date.now() + duration;
-
-            (function frame() {
-                confetti({
-                    particleCount: 3,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#ff4d6d', '#c9184a', '#ffb3c1']
-                });
-                confetti({
-                    particleCount: 3,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#ff4d6d', '#c9184a', '#ffb3c1']
-                });
-                if (Date.now() < end) requestAnimationFrame(frame);
-            }());
-        }
-
-        // --- INITIALIZATION ---
-        window.addEventListener('load', () => {
-            initThree();
-            animateThree();
-            gsap.to("#step1", { opacity: 1, y: 0, duration: 1, delay: 0.5 });
-        });
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+  <button class="btn">❤️</button>
 </body>
 </html>
