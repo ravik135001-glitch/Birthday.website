@@ -1,2 +1,2 @@
-# Birthday.website
-Best happy birthday wishes for friend with unique card
+# my.website
+In this website make future bright in digital world! 🌎 
