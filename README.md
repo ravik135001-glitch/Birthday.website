@@ -1,8 +1,8 @@
-​🎈 Celebration & UI Collection
+#​🎈 Celebration & UI Collection
 ​A collection of fun, interactive web projects ranging from festive greeting sites to modern CSS UI effects.
 
 
-​✨ 1. Glowing Button Effect[index.(1)]
+#​✨ 1. Glowing Button Effect[index.(1)]
 ​What is it? A sleek, modern CSS-only (or JS-enhanced) button component with a neon glow effect.
 ​Key Features:
 ​Smooth hover transitions.
@@ -12,7 +12,7 @@
 
 
 
-​🎂 2. Birthday Wishes Website[index.(2)]
+#​🎂 2. Birthday Wishes Website[index.(2)]
 ​What is it? An interactive web page designed to send personalized birthday greetings.
 ​Key Features:
 ​Responsive design for mobile and desktop.
@@ -22,7 +22,7 @@
 
 
 
-​🥂 3. Anniversary Wishes Website[index.3)]
+#​🥂 3. Anniversary Wishes Website[index.3)]
 ​What is it? A romantic and elegant site template for anniversary celebrations.
 ​Key Features:
 ​Elegant typography and color palette.
